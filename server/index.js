@@ -179,5 +179,15 @@ app.post('/run/:language', async (req, res) => {
 
 
 
-const PORT = process.env.PORT || 4000;
-server.listen(PORT, () => console.log(`Server listening on ${PORT}`));
+const PORT = process.env.PORT || 5000;
+
+// Start the server
+if(process.env.NODE_ENV!=="production"){
+
+  server.listen(PORT, () => {
+    console.log(`Server is running on port: ${PORT}`);
+  });
+}
+
+//Export server for vercel
+export default server;
